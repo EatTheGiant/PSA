@@ -39,6 +39,10 @@ class Sprava:
         nick = input("Zadaj login: ")
         napoveda()
 
+        sprava = Sprava(nick, '', Operacia.LOGIN, '')
+        jsonSTR = json.dumps(sprava.__dict__)
+        sock.send(jsonSTR.encode())
+
         while(True):
             prikaz = input("Zadaj prikaz/spravu: ")
 
@@ -66,7 +70,7 @@ class Sprava:
             sprava = Sprava(nick, zoznam[0], '', zoznam[1])
             jsonSTR = json.dumps(sprava.__dict__)
             sock.send(jsonSTR.encode())
-            
+
 
 
 
